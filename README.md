@@ -1,4 +1,9 @@
 CCHS-Member-Essentials
 ======================
 
-This repo contains config files for design and operation of CCHS equipment and tools.
+Config Files and Post Processors for equipment operation and design should live here.
+
+As well as any essential documentation (or instructions on where to find it) for settings for equipment.
+
+
+
