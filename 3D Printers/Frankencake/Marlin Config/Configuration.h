@@ -9,7 +9,7 @@
 //Implementation of an idea by Prof Braino to inform user that any changes made
 //to this build by the user have been successfully uploaded into firmware.
 #define STRING_VERSION_CONFIG_H __DATE__ " " __TIME__ // build date and time
-#define STRING_CONFIG_H_AUTHOR "(none, default config)" //Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "Trystan Jones" //Who made the changes.
 
 // SERIAL_PORT selects which serial port should be used for communication with the host.
 // This allows the connection of wireless adapters (for instance) to non-default port pins.
@@ -141,9 +141,15 @@
 //    #define  DEFAULT_Kd 12  
 
 // Mendel Parts V9 on 12V    
-    #define  DEFAULT_Kp 63.0
-    #define  DEFAULT_Ki (2.25*PID_dT)
-    #define  DEFAULT_Kd (440/PID_dT)
+//    #define  DEFAULT_Kp 63.0
+//    #define  DEFAULT_Ki (2.25*PID_dT)
+//    #define  DEFAULT_Kd (440/PID_dT)
+
+// Results of autotune run on Cupcake by DF
+#define DEFAULT_Kp (39.88)
+#define DEFAULT_Ki (1.71)
+#define DEFAULT_Kd (231.96)
+
 #endif // PIDTEMP
 
 // Bed Temperature Control
@@ -178,6 +184,11 @@
 //    #define  DEFAULT_bedKp 97.1
 //    #define  DEFAULT_bedKi 1.41
 //    #define  DEFAULT_bedKd 1675.16
+
+//12v Cupcake Heated bed
+    #define  DEFAULT_bedKp 152.64
+    #define  DEFAULT_bedKi 28.40
+    #define  DEFAULT_bedKd 205.07
 
 // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -256,11 +267,11 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 #define min_software_endstops true //If true, axis won't move to coordinates less than HOME_POS.
 #define max_software_endstops true  //If true, axis won't move to coordinates greater than the defined lengths below.
 // Travel limits after homing
-#define X_MAX_POS 205
+#define X_MAX_POS 120
 #define X_MIN_POS 0
-#define Y_MAX_POS 205
+#define Y_MAX_POS 110
 #define Y_MIN_POS 0
-#define Z_MAX_POS 200
+#define Z_MAX_POS 105
 #define Z_MIN_POS 0
 
 #define X_MAX_LENGTH (X_MAX_POS - X_MIN_POS)
@@ -283,7 +294,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 // default settings 
 
 #define DEFAULT_AXIS_STEPS_PER_UNIT   {47.28132,47.28132,1280,251.8053944}  // default steps per unit for ultimaker
-#define DEFAULT_MAX_FEEDRATE          {500, 500, 50, 50}    // (mm/sec)
+#define DEFAULT_MAX_FEEDRATE          {500, 500, 17, 35}    // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {9000,9000,100,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves 
