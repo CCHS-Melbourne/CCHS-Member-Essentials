@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PostProcessor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="0.9.8.0">
+  <PostFile>
+{$header}
+{$mops}
+{$footer}
+</PostFile>
+  <Header>{$cbfile.header}
+{$units} 
+{$clearance}
+</Header>
+  <Footer>{$clearance}
+{$spindle(off)}
+M604 R0 Y128 B0
+{$endrewind}
+</Footer>
+  <StartCut>{$spindle(CW)}
+</StartCut>
+  <ToolTableItem />
+  <ToolChange>{$clearance}
+T{$tool.index} M6</ToolChange>
+  <MOP>{$velocitymode} {$workplane}
+{$mop.header}
+M3
+{$blocks}
+{$mop.footer}
+</MOP>
+  <SpindleCW>M604 R0 Y128 B255
+M3</SpindleCW>
+  <Drill>M3
+{$g0} {$_x} {$_y}
+{$g1} {$_z} {$_f}
+{$g0} F500 Z{$mop.clearanceplane}
+M5
+
+
+
+</Drill>
+  <ArcOutput>ConvertToLines</ArcOutput>
+</PostProcessor>
